@@ -18,35 +18,72 @@
             if (cells.Length < 3)
             {
                 // Log error message and return null
+                logger.LogWarning("Error accured, less than three lines. ");
+
                 return null; 
             }
 
-            // TODO: Grab the latitude from your array at index 0
+            // DONE: Grab the latitude from your array at index 0
             // You're going to need to parse your string as a `double`
             // which is similar to parsing a string as an `int`
-            
-            
-            // TODO: Grab the longitude from your array at index 1
-            // You're going to need to parse your string as a `double`
-            // which is similar to parsing a string as an `int`
-            
-            
-            // TODO: Grab the name from your array at index 2
-            
 
-            // TODO: Create a TacoBell class
+            double lat = 0;
+
+            if (double.TryParse(cells[0], out lat) == false)
+            {
+                logger.LogError($"{cells[0]} Bad data. Unable to parse latitude as a double.");
+            }
+            
+            
+            // DONE: Grab the longitude from your array at index 1
+            // You're going to need to parse your string as a `double`
+            // which is similar to parsing a string as an `int`
+
+            double longitude = 1;
+
+            if (double.TryParse(cells[1], out longitude) == false)
+            {
+                logger.LogError("Bad data. Unable to parse longitude as a double");
+            }
+
+
+            // DONE: Grab the name from your array at index 2
+
+            var name = cells[2];
+
+            if (cells[2] == null || cells[2].Length == 0)
+            {
+                logger.LogError("No location name found.");
+            }
+
+
+            // DONE: Create a TacoBell class
             // that conforms to ITrackable
-            
-            // TODO: Create an instance of the Point Struct
-            // TODO: Set the values of the point correctly (Latitude and Longitude) 
 
-            // TODO: Create an instance of the TacoBell class
-            // TODO: Set the values of the class correctly (Name and Location)
+            // DONE: Create an instance of the Point Struct
+            // DONE: Set the values of the point correctly (Latitude and Longitude) 
 
-            // TODO: Then, return the instance of your TacoBell class,
+            var point = new Point
+            {
+                Latitude = lat,
+                Longitude = longitude
+            };
+
+
+            // DONE: Create an instance of the TacoBell class
+            // DONE: Set the values of the class correctly (Name and Location)
+
+            var tacoBell = new TacoBell();
+
+            tacoBell.Location = point;
+            tacoBell.Name = name;
+
+            // DONE: Then, return the instance of your TacoBell class,
             // since it conforms to ITrackable
 
-            return null;
+
+
+            return tacoBell;
         }
     }
 }
