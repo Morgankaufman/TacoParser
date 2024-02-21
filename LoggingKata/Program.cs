@@ -61,7 +61,7 @@ namespace LoggingKata
 
             }
 
-            logger.LogInfo($"{tacoBell1.Name} and {tacoBell2}");
+            logger.LogInfo($"{tacoBell1.Name} and {tacoBell2.Name}");
 
 
         }
